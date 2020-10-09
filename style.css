@@ -1,0 +1,12 @@
+.form, 
+.greegings {
+    display: none;
+}
+
+.showing {
+    display: block;
+}
+
+body {
+    color: #34495e;
+}
