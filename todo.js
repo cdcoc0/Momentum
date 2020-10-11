@@ -4,7 +4,22 @@ toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = "toDos";
 
-const TODOS = [];
+let TODOS = [];
+
+/*function filterFn(toDo) {
+    return toDo.id === 1;
+}*/
+
+function deleteToDo(event) {
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    const cleanToDos = TODOS.filter(function(toDo) {
+        return toDo.id !== parseInt(li.id);
+    });
+    TODOS = cleanToDos;
+    saveToDos();
+}
 
 function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(TODOS));
@@ -17,6 +32,7 @@ function paintToDo(text) {
     const SPAN = document.createElement("span");
     const newId = TODOS.length + 1;
     DELBTN.innerText = "❌"; //win + .
+    DELBTN.addEventListener("click", deleteToDo);
     SPAN.innerText = text;
     LI.appendChild(SPAN);
     LI.appendChild(DELBTN);
