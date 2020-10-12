@@ -10,7 +10,8 @@ function paintImage(imgNumber) {
     const image = new Image();
     image.src = `images/pic${imgNumber + 1}.jpg`;
     image.classList.add('bgImage');
-    body.appendChild(image);
+    body.prepend(image);
+    //body.appendChild(image);
     //image.addEventListener("loadend", handleImgLoad);
 }
 
