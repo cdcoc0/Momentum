@@ -1,6 +1,16 @@
 const API_KEY = "bae1076bc4c9ce19a1bd0aa7f04a7d96";
 const COORDS = "coords";
 
+//브라우저의 refresh 없이 데이터를 가져옴
+function getWeather(lat, lon) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`).
+    then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        console.log(json);
+    });
+}
+
 function saveCoords(coordsObj) {
     localStorage.setItem(COORDS, JSON.stringify(coordsObj));
 }
@@ -10,17 +20,18 @@ function handleGeoSuccess(position) {
     const longitude = position.coords.longitude;
     const coordsObj = {
         latitude, //: latitude, 
-        longitude // = longitude
+        longitude //: longitude
     };
     saveCoords(coordsObj);
+    getWeather(latitude, longitude);
 }
 
 function handleGeoError() {
-    console.log("failed")
+    console.log("failed");
 }
 
 function askForCoords() {
-    navigator.geolocation.getCurrentPosition(handleGeoSuccess, )
+    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
 }
 
 function loadCoords() {
@@ -28,7 +39,8 @@ function loadCoords() {
     if(loadedCoords === null) {
         askForCoords();
     } else {
-        //getWeather
+        const parsedCoords = JSON.parse(loadedCoords);
+        getWeather(parsedCoords.latitude, parsedCoords.longitude);
     }
 }
 
