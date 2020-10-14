@@ -8,7 +8,8 @@
 }
 
 h1 {
-    margin: 0;
+    margin-top: 150px;
+    margin-bottom: 0;
 }
 
 h4 {
@@ -37,10 +38,8 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-  
-ul {
-    margin-top: 50px;
+    margin-top: 30px;
+    font-size: 25px;
 }
 
 .list {
@@ -58,6 +57,7 @@ ul {
 
 .showing {
     display: block;
+    font-size: 35px;
 }
 
 .body {
@@ -67,8 +67,12 @@ ul {
     animation: fadeIn 1s;
 }
 
+.weather {
+    animation: fadeIn 1s;
+}
+
 body {
-    color: whitesmoke;
+    color: white;
     background-color: black;
 }
 
@@ -82,6 +86,11 @@ body {
     animation: fadeIn 1s ease-in-out forwards;
 }
 
-.clock{
+.clock {
     font-size: 6em;
+}
+
+.toDo_button {
+    margin-left: 10px;
+    cursor: pointer;
 }

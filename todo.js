@@ -32,6 +32,7 @@ function paintToDo(text) {
     const SPAN = document.createElement("span");
     const newId = TODOS.length + 1;
     DELBTN.innerText = "❌"; //win + .
+    DELBTN.className = "toDo_button";
     DELBTN.addEventListener("click", deleteToDo);
     SPAN.innerText = text;
     LI.appendChild(SPAN);
